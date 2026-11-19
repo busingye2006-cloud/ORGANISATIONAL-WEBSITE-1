@@ -1,613 +1,564 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Wakatayi Senior Secondary School</title>
 
     <style>
-        /* GENERAL STYLING */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      <!--I HAVE USED INTERNAL CSS COS IT SEEMED TO BE MORE FLEXIBLE-- > * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border-radius: 10;
+      }
 
-        html {
-            scroll-behavior: smooth;
-        }
+      html {
+        scroll-behavior: smooth;
+      }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f8f5;
-            color: #333;
-            line-height: 1.6;
-        }
+      body {
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        background: #f4f8f5;
+        color: #333;
+        line-height: 1.6;
+      }
 
-        /* HEADER */
+      <!--HEADER -- > header {
+        background: #006b3c;
+        color: white;
+        padding: 20px 5%;
+        display: flexbox;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      header h1 {
+        font-size: 25px;
+      }
+
+      header h1 span {
+        color: crimson;
+      }
+      p1 span {
+        color: crimson;
+      }
+      p1 {
+        font-size: large;
+      }
+
+      /* NAVIGATION */
+      nav {
+        background: #004d2b;
+        padding: 15px;
+        text-align: center;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 12px 18px;
+        font-weight: bold;
+        display: inline-block;
+      }
+
+      nav a:hover {
+        background: #f4cc00;
+        color: black;
+      }
+
+      /* HERO SECTION */
+      .hero {
+        background:
+          linear-gradient(rgba(0, 80, 40, 0.85), rgba(0, 80, 40, 0.85)),
+          url("images/school-poster.jpg");
+
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+      }
+
+      .hero h2 {
+        font-size: 42px;
+        margin-bottom: 15px;
+      }
+
+      .hero h2 span {
+        color: yellow;
+      }
+
+      .hero p {
+        font-size: 20px;
+        margin-bottom: 25px;
+      }
+
+      .btn {
+        background: #ffcc00;
+        color: #004d2b;
+        padding: 13px 25px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        display: inline-block;
+      }
+
+      .btn:hover {
+        background: rgb(216, 22, 22);
+      }
+
+      /* GENERAL SECTIONS */
+      section {
+        padding: 60px 8%;
+      }
+
+      .section-title {
+        text-align: center;
+        color: #006b3c;
+        font-size: 32px;
+        margin-bottom: 30px;
+      }
+
+      /* THIS IS THE ABOUT SECTION */
+      .about {
+        background: white;
+        text-align: center;
+        color: #200581;
+      }
+
+      .about p {
+        max-width: 850px;
+        margin: auto;
+        font-size: 18px;
+      }
+
+      /*THIS IS THE PROGRAMMES SECTION */
+      .programmes {
+        background: #caeed7;
+      }
+
+      .programme-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 25px;
+        color: red;
+      }
+
+      .programme-card {
+        background: rgb(204, 240, 238);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 3px 12px #00000015;
+      }
+
+      .programme-card h3 {
+        color: #130f42;
+        margin-bottom: 15px;
+      }
+
+      .programme-card:hover {
+        transform: translateY(-9px);
+        transition: 8s;
+      }
+
+      /* THIS IS THE ADMISSIONS SECTION */
+      .admissions {
+        background: #006b3c;
+        color: white;
+        text-align: center;
+      }
+
+      .admissions h2 {
+        color: yellow;
+        font-size: 35px;
+        margin-bottom: 15px;
+      }
+
+      .admissions p {
+        font-size: 19px;
+        margin-bottom: 15px;
+      }
+
+      <!-- THIS IS THE CONTACT SECTION-- > .contact {
+        background: white;
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 35px;
+      }
+
+      .contact-info {
+        background: #eaf5ee;
+        padding: 25px;
+        border-radius: 10px;
+      }
+
+      .contact-info h3 {
+        color: #006b3c;
+        margin-bottom: 15px;
+      }
+
+      .contact-info p {
+        margin-bottom: 12px;
+      }
+
+      .contact-info a {
+        color: #006b3c;
+        font-weight: bold;
+      }
+
+      <!--THIS IS THE STYLING FOR INQUIRY FORM-- > .inquiry-form {
+        padding: 25px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+      }
+
+      .inquiry-form h3 {
+        color: #006b3c;
+        margin-bottom: 20px;
+      }
+
+      .inquiry-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: solid black;
+      }
+
+      .inquiry-form input,
+      .inquiry-form select,
+      .inquiry-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 18px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 16px;
+        color: solid black;
+      }
+
+      .inquiry-form button {
+        background: #006b3c;
+        color: white;
+        border: none;
+        padding: 14px;
+        width: 100%;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .inquiry-form button:hover {
+        background: #691136;
+      }
+
+      <!--THIS IS FOR THE LOCATION SECTION-- > .location {
+        background: #eaf5ee;
+        text-align: center;
+      }
+
+      /* FOOTER */
+      footer {
+        background: #200581;
+        color: white;
+        text-align: center;
+        padding: 30px 15px;
+      }
+
+      footer p {
+        margin: 10px;
+      }
+
+      <!--RESPONSIVE DESIGN-- > @media (max-width: 600px) {
         header {
-            background: #006b3c;
-            color: white;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+          justify-content: center;
+          text-align: center;
         }
 
         header h1 {
-            font-size: 25px;
-        }
-
-        header h1 span {
-            color: yellow;
-        }
-
-        /* NAVIGATION */
-        nav {
-            background: #004d2b;
-            padding: 15px;
-            text-align: center;
+          font-size: 20px;
         }
 
         nav a {
-            color: white;
-            text-decoration: none;
-            padding: 12px 18px;
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        nav a:hover {
-            background: #f4cc00;
-            color: black;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(
-                rgba(0, 80, 40, 0.85),
-                rgba(0, 80, 40, 0.85)
-            ),
-            url("images/school-poster.jpg");
-
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
+          padding: 10px;
+          font-size: 14px;
         }
 
         .hero h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .hero h2 span {
-            color: yellow;
+          font-size: 30px;
         }
 
         .hero p {
-            font-size: 20px;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            background: #ffcc00;
-            color: #004d2b;
-            padding: 13px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background: white;
-        }
-
-        /* GENERAL SECTIONS */
-        section {
-            padding: 60px 8%;
+          font-size: 17px;
         }
 
         .section-title {
-            text-align: center;
-            color: #006b3c;
-            font-size: 32px;
-            margin-bottom: 30px;
+          font-size: 26px;
         }
-
-        /* ABOUT */
-        .about {
-            background: white;
-            text-align: center;
-        }
-
-        .about p {
-            max-width: 850px;
-            margin: auto;
-            font-size: 18px;
-        }
-
-        /* PROGRAMMES */
-        .programmes {
-            background: #eaf5ee;
-        }
-
-        .programme-container {
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(230px, 1fr));
-            gap: 25px;
-        }
-
-        .programme-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 3px 12px #00000015;
-        }
-
-        .programme-card h3 {
-            color: #006b3c;
-            margin-bottom: 15px;
-        }
-
-        .programme-card:hover {
-            transform: translateY(-5px);
-            transition: 0.3s;
-        }
-
-        /* ADMISSIONS */
-        .admissions {
-            background: #006b3c;
-            color: white;
-            text-align: center;
-        }
-
-        .admissions h2 {
-            color: yellow;
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .admissions p {
-            font-size: 19px;
-            margin-bottom: 15px;
-        }
-
-        /* CONTACT */
-        .contact {
-            background: white;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-        }
-
-        .contact-info {
-            background: #eaf5ee;
-            padding: 25px;
-            border-radius: 10px;
-        }
-
-        .contact-info h3 {
-            color: #006b3c;
-            margin-bottom: 15px;
-        }
-
-        .contact-info p {
-            margin-bottom: 12px;
-        }
-
-        .contact-info a {
-            color: #006b3c;
-            font-weight: bold;
-        }
-
-        /* INQUIRY FORM */
-        .inquiry-form {
-            padding: 25px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-        }
-
-        .inquiry-form h3 {
-            color: #006b3c;
-            margin-bottom: 20px;
-        }
-
-        .inquiry-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .inquiry-form input,
-        .inquiry-form select,
-        .inquiry-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 18px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 15px;
-        }
-
-        .inquiry-form button {
-            background: #006b3c;
-            color: white;
-            border: none;
-            padding: 14px;
-            width: 100%;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .inquiry-form button:hover {
-            background: #004d2b;
-        }
-
-        /* LOCATION */
-        .location {
-            background: #eaf5ee;
-            text-align: center;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #003d25;
-            color: white;
-            text-align: center;
-            padding: 30px 15px;
-        }
-
-        footer p {
-            margin: 8px;
-        }
-
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 600px) {
-
-            header {
-                justify-content: center;
-                text-align: center;
-            }
-
-            header h1 {
-                font-size: 20px;
-            }
-
-            nav a {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            .hero h2 {
-                font-size: 30px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .section-title {
-                font-size: 26px;
-            }
-        }
-
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-- HEADER -->
     <header>
-        <h1>WAKATAYI <span>SECONDARY SCHOOL</span></h1>
-        <p>Education Is My Shield</p>
+      <h1>WAKATAYI <span>SECONDARY </span>SCHOOL</h1>
+      <p1>Education <span>Is</span> My Shield</p1>
     </header>
 
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION SECTION FOR EASY MOVEMENT TO ANOTHER PAGE-->
     <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#programmes">Programmes</a>
-        <a href="#admissions">Admissions</a>
-        <a href="#contact">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#programmes">Programmes</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-    <!-- HOME -->
+    <!--THIS IS THE HOME SECTION HOME -->
     <section class="hero" id="home">
+      <h2>WELCOME TO <span>WAKATAYI</span></h2>
 
-        <h2>WELCOME TO <span>WAKATAYI</span></h2>
+      <p>
+        Education Is My Shield. Building Knowledge, Faith and Skills for the
+        Future.
+      </p>
+      <img
+        src="WAKATAAYI ADMISSION.jpg"
+        alt="wakatayi image"
+        style="
+          margin-top: 20px;
+          max-width: 100%;
+          height: auto;
+          border-radius: 20px;
+        "
+      />
 
-        <p>
-            Education Is My Shield.
-            Building Knowledge, Faith and Skills for the Future.
-        </p>
-         <img src="WAKATAAYI ADMISSION.jpg" alt="wakatayi image" style="margin-top: 20px; max-width: 100%; height: auto; border-radius: 20px;">
-
-        <a href="#admissions" class="btn">
-            APPLY FOR ADMISSION
-</a>
+      <a href="#admissions" class="btn"> APPLY FOR ADMISSION </a>
     </section>
 
     <!-- ABOUT -->
     <section class="about" id="about">
+      <h2 class="section-title">ABOUT OUR SCHOOL</h2>
 
-        <h2 class="section-title">ABOUT OUR SCHOOL</h2>
-
-        <p>
-            Wakatayi Senior Secondary School is an educational
-            institution located in Luwero, Bamunanika,
-            Zirobwe-Wakataayi, Uganda.
-
-            The school provides secular education, Islamic
-            theology studies, vocational training and
-            co-curricular activities for learners.
-
-            Our motto is "Education Is My Shield".
-        </p>
-
+      <p>
+        Wakatayi Senior Secondary School is an educational institution located
+        in Luwero, Bamunanika, Zirobwe-Wakataayi, Uganda. The school provides
+        secular education, Islamic theology studies, vocational training and
+        co-curricular activities for learners. Our motto is "Education Is My
+        Shield".
+      </p>
     </section>
 
     <!-- PROGRAMMES -->
     <section class="programmes" id="programmes">
+      <h2 class="section-title">OUR PROGRAMMES</h2>
 
-        <h2 class="section-title">OUR PROGRAMMES</h2>
-
-        <div class="programme-container">
-
-            <div class="programme-card">
-                <h3>SECULAR STUDIES</h3>
-                <p>
-                    Arts and Sciences at Ordinary Level
-                    and Advanced Level.
-                </p>
-            </div>
-
-            <div class="programme-card">
-                <h3>THEOLOGY STUDIES</h3>
-                <p>
-                    Shuuba, Idaad, Thanawi,
-                    Islamic Da'wah and Quran memorisation
-                    for girls and boys.
-                </p>
-            </div>
-
-            <div class="programme-card">
-                <h3>VOCATIONAL STUDIES</h3>
-                <p>
-                    Tailoring, ICT, farming,
-                    agriculture, welding and plumbing.
-                </p>
-            </div>
-
-            <div class="programme-card">
-                <h3>CO-CURRICULAR ACTIVITIES</h3>
-                <p>
-                    Sports and other activities
-                    that develop learners' talents.
-                </p>
-            </div>
-
+      <div class="programme-container">
+        <div class="programme-card">
+          <h3>SECULAR STUDIES</h3>
+          <p>Arts and Sciences at Ordinary Level and Advanced Level.</p>
         </div>
 
+        <div class="programme-card">
+          <h3>THEOLOGY STUDIES</h3>
+          <p>
+            Shuuba, Idaad, Thanawi, Islamic Da'wah and Quran memorisation for
+            girls and boys.
+          </p>
+        </div>
+
+        <div class="programme-card">
+          <h3>VOCATIONAL STUDIES</h3>
+          <p>Tailoring, ICT, farming, agriculture, welding and plumbing.</p>
+        </div>
+
+        <div class="programme-card">
+          <h3>CO-CURRICULAR ACTIVITIES</h3>
+          <p>Sports and other activities that develop learners' talents.</p>
+        </div>
+      </div>
     </section>
 
     <!-- ADMISSIONS -->
     <section class="admissions" id="admissions">
+      <h2>ADMISSION IN PROGRESS!</h2>
 
-        <h2>ADMISSION IN PROGRESS!</h2>
+      <p>Admissions are open from Senior One to Senior Six (S.1-S.6).</p>
 
-        <p>
-            Admissions are open from Senior One
-            to Senior Six (S.1-S.6).
-        </p>
+      <p>Visit our school campus Monday to Saturday.</p>
 
-        <p>
-            Visit our school campus Monday to Saturday.
-        </p>
+      <p>Time: 9:00 AM - 5:00 PM</p>
 
-        <p>
-            Time: 9:00 AM - 5:00 PM
-        </p>
-
-        <a href="#contact" class="btn">
-            CONTACT THE SCHOOL
-        </a>
-
+      <a href="#contact" class="btn"> CONTACT THE SCHOOL </a>
     </section>
 
     <!-- CONTACT AND INQUIRY -->
     <section class="contact" id="contact">
+      <h2 class="section-title">CONTACT US</h2>
 
-        <h2 class="section-title">
-            CONTACT US
-        </h2>
+      <div class="contact-container">
+        <!-- CONTACT INFORMATION -->
+        <div class="contact-info">
+          <h3>School Contact Information</h3>
 
-        <div class="contact-container">
+          <p>
+            <strong>School:</strong>
+            Wakatayi Senior Secondary School
+          </p>
 
-            <!-- CONTACT INFORMATION -->
-            <div class="contact-info">
+          <p>
+            <strong>Location:</strong>
+            Luwero, Bamunanika, Zirobwe-Wakataayi, Uganda
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:info@wakatayischool.com">
+              info@wakatayischool.com
+            </a>
+          </p>
 
-                <h3>School Contact Information</h3>
+          <p>
+            <strong>Telephone 1:</strong>
+            <a href="tel:+256773952277"> 0773 952277 </a>
+          </p>
 
-                <p><strong>School:</strong>
-                    Wakatayi Senior Secondary School
-                </p>
+          <p>
+            <strong>Telephone 2:</strong>
+            <a href="tel:+256781779214"> 0781 779214 </a>
+          </p>
 
-                <p><strong>Location:</strong>
-                    Luwero, Bamunanika,
-                    Zirobwe-Wakataayi, Uganda
-                </p>
-                <p><strong>Email:</strong>
-                    <a href="mailto:info@wakatayischool.com">
-                        info@wakatayischool.com
-                    </a>
-                </p>        
+          <p>
+            <strong>Telephone 3:</strong>
+            <a href="tel:+256756647572"> 0756 647572 </a>
+          </p>
 
-                <p><strong>Telephone 1:</strong>
-                    <a href="tel:+256773952277">
-                        0773 952277
-                    </a>
-                </p>
+          <h3>WhatsApp Contacts</h3>
 
-                <p><strong>Telephone 2:</strong>
-                    <a href="tel:+256781779214">
-                        0781 779214
-                    </a>
-                </p>
+          <p>
+            <a href="https://wa.me/256773952277"> WhatsApp Number 1 </a>
+          </p>
 
-                <p><strong>Telephone 3:</strong>
-                    <a href="tel:+256756647572">
-                        0756 647572
-                    </a>
-                </p>
+          <p>
+            <a href="https://wa.me/256781779214"> WhatsApp Number 2 </a>
+          </p>
 
-                <h3>WhatsApp Contacts</h3>
-
-                <p>
-                    <a href="https://wa.me/256773952277">
-                        WhatsApp Number 1
-                    </a>
-                </p>
-
-                <p>
-                    <a href="https://wa.me/256781779214">
-                        WhatsApp Number 2
-                    </a>
-                </p>
-
-                <p>
-                    <a href="https://wa.me/256756647572">
-                        WhatsApp Number 3
-                    </a>
-                </p>
-
-            </div>
-
-            <!-- INQUIRY FORM -->
-            <div class="inquiry-form">
-
-                <h3>STUDENT INQUIRY FORM</h3>
-
-                <form action="#" method="post">
-
-                    <label>Parent/Guardian Name</label>
-                    <input type="text"
-                           name="parent_name"
-                           placeholder="Enter your full name"
-                           required>
-
-                    <label>Telephone Number</label>
-                    <input type="tel"
-                           name="telephone"
-                           placeholder="Enter your phone number"
-                           required>
-
-                    <label>Student Name</label>
-                    <input type="text"
-                           name="student_name"
-                           placeholder="Enter student name">
-
-                    <label>Class Applying For</label>
-
-                    <select name="class" required>
-                        <option value="">Select Class</option>
-                        <option>Senior One</option>
-                        <option>Senior Two</option>
-                        <option>Senior Three</option>
-                        <option>Senior Four</option>
-                        <option>Senior Five</option>
-                        <option>Senior Six</option>
-                    </select>
-
-                    <label>Programme of Interest</label>
-
-                    <select name="programme">
-                        <option>Arts</option>
-                        <option>Sciences</option>
-                        <option>Theology Studies</option>
-                        <option>Vocational Studies</option>
-                    </select>
-
-                    <label>Your Message</label>
-
-                    <textarea name="message"
-                              rows="5"
-                              placeholder="Write your inquiry here..."
-                              required></textarea>
-
-                    <button type="submit">
-                        SUBMIT INQUIRY
-                    </button>
-
-                </form>
-
-                <p style="font-size:13px; margin-top:12px;">
-                    Contact the school directly to submit your inquiry.
-                    This HTML-only form does not yet save or send submissions from developer.
-                </p>
-
-            </div>
-
+          <p>
+            <a href="https://wa.me/256756647572"> WhatsApp Number 3 </a>
+          </p>
         </div>
 
+        <!-- INQUIRY FORM -->
+        <div class="inquiry-form">
+          <h3>STUDENT INQUIRY FORM</h3>
+
+          <form action="#" method="post">
+            <label>Parent/Guardian Name</label>
+            <input
+              type="text"
+              name="parent_name"
+              placeholder="Enter your full name"
+              required
+            />
+
+            <label>Telephone Number</label>
+            <input
+              type="tel"
+              name="telephone"
+              placeholder="Enter your phone number"
+              required
+            />
+
+            <label>Student Name</label>
+            <input
+              type="text"
+              name="student_name"
+              placeholder="Enter student name"
+            />
+
+            <label>Class Applying For</label>
+
+            <select name="class" required>
+              <option value="">Select Class</option>
+              <option>Senior One</option>
+              <option>Senior Two</option>
+              <option>Senior Three</option>
+              <option>Senior Four</option>
+              <option>Senior Five</option>
+              <option>Senior Six</option>
+            </select>
+
+            <label>Programme of Interest</label>
+
+            <select name="programme">
+              <option>Arts</option>
+              <option>Sciences</option>
+              <option>Theology Studies</option>
+              <option>Vocational Studies</option>
+            </select>
+
+            <label>Your Message</label>
+
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Write your inquiry here..."
+              required
+            ></textarea>
+
+            <button type="submit">SUBMIT INQUIRY</button>
+          </form>
+
+          <p style="font-size: 13px; margin-top: 12px">
+            Contact the school directly to submit your inquiry. This HTML-only
+            form does not yet save or send submissions from developer.Thank you
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- LOCATION -->
     <section class="location">
+      <h2 class="section-title">OUR LOCATION</h2>
 
-        <h2 class="section-title">OUR LOCATION</h2>
+      <p>Luwero, Bamunanika, Zirobwe-Wakataayi, Uganda.</p>
 
-        <p>
-            Luwero, Bamunanika,
-            Zirobwe-Wakataayi, Uganda.
-        </p>
-
-        <p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Wakataayi+Zirobwe+Luwero+Uganda">
-                View Location on Google Maps
-            </a>
-        </p>
-
+      <p>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Wakataayi+Zirobwe+Luwero+Uganda"
+        >
+          View Location on Google Maps
+          <!--I got this link from google-->
+        </a>
+      </p>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER section -->
     <footer>
+      <h2>WAKATAYI SENIOR SECONDARY SCHOOL</h2>
 
-        <h2>WAKATAYI SENIOR SECONDARY SCHOOL</h2>
+      <p>Education Is My Shield</p>
 
-        <p>Education Is My Shield</p>
+      <p>Luwero, Bamunanika, Zirobwe-Wakataayi, Uganda.</p>
+      <p>
+        <em
+          ><strong>40 years</strong> in service of education and community
+          development.</em
+        >
+      </p>
 
-        <p>
-            Luwero, Bamunanika,
-            Zirobwe-Wakataayi, Uganda.
-        </p>
-        <p>
-            40 ears in service of education and community development.
-        </p>
+      <p>Tel: 0773 952277 / 0781 779214 / 0756 647572</p>
 
-        <p>
-            Tel: 0773 952277 / 0781 779214 /
-            0756 647572
-        </p>
-
-        <p>
-            &copy; 2026 Wakatayi Senior Secondary School.
-            All Rights Reserved.
-        </p>
-
+      <p>
+        &copy; 2026 Wakatayi Senior Secondary School. All Rights Reserved to the
+        school. .
+      </p>
     </footer>
-
-</body>
+  </body>
 </html>
-
